@@ -12,7 +12,7 @@ Currently supports:
 
 - AWS
 
-![Screenshot #1](screenshots/Dashboard Image.png)
+![Screenshot #1](screenshots/Dashboard%20Image.png)
 
 ## Open Source License
 
