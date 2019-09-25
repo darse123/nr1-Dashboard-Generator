@@ -1,4 +1,4 @@
-# Dashboard Generatore (Dashboard-Generator)
+# Dashboard Generator
 
 ## Usage
 
