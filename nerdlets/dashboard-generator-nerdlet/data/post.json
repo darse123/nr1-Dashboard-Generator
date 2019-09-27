@@ -2027,7 +2027,6 @@
                 "editable": "editable_by_all",
                 "ui_url": "https://insights.newrelic.com/accounts/485640/dashboards/710968",
                 "api_url": "https://api.newrelic.com/v2/dashboards/710968",
-                "owner_email": "ddoyle@newrelic.com",
                 "metadata": {
                     "version": 1
                 },
@@ -3306,6 +3305,2037 @@
                 "filter": {
                     "event_types": [
                         "Mobile"
+                    ],
+                    "attributes": []
+                }
+            }
+        }
+    },
+    {
+        "id": 12,
+        "Category": "Browser",
+        "Name": "Browser Overview ",
+        "dashboard": {
+            "dashboard": {
+                "id": 998307,
+                "title": "Browser Overview",
+                "description": null,
+                "icon": "globe",
+                "created_at": "2019-09-27T08:57:34Z",
+                "updated_at": "2019-09-27T08:57:34Z",
+                "visibility": "all",
+                "editable": "editable_by_all",
+                "ui_url": "https://insights.newrelic.com/accounts/689105/dashboards/998307",
+                "api_url": "https://api.newrelic.com/v2/dashboards/998307",
+                "metadata": {
+                    "version": 1
+                },
+                "widgets": [
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 1
+                        },
+                        "widget_id": 12488836,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM PageView FACET browserTransactionName SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Traffic by Page Group",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "attribute_sheet",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 2
+                        },
+                        "widget_id": 12488837,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(duration) as 'Avg Page Load', percentile(duration,50) as 'Median', percentile(duration,95) as 'Percentile', uniqueCount(session) as 'Visitors' FROM PageView SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Stats Breakout",
+                            "notes": "In this widget we're simply breaking out the running average, median and 95th percentile values for load time across all pages currently selected, as well as the total number of unique session identifiers recorded in the last week."
+                        }
+                    },
+                    {
+                        "visualization": "markdown",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 3
+                        },
+                        "widget_id": 12488838,
+                        "data": [
+                            {
+                                "source": "![Image](https://newrelic.com/content/dam/component-assets/u03-navigation/logo-insights.svg)\n\n----\n\n# Browser + Insights\n\nBy examining our PageView data in Insights, we can identify more specific trends, and filter down to specific Transaction Types, and then view performance and demographic information that might be missed by aggregation."
+                            }
+                        ],
+                        "presentation": {
+                            "title": "",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "comparison_line_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 2,
+                            "column": 1
+                        },
+                        "widget_id": 12488839,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM PageView TIMESERIES 30 minutes SINCE 1 week ago COMPARE WITH 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Page Views over Time",
+                            "notes": "Here we can see the volume of traffic over the last week in blue, as compared to last week's traffic in the dotted yellow line for side-by-side comparison. This allows us to identify if traffic is trending differently than it has in the past."
+                        }
+                    },
+                    {
+                        "visualization": "billboard_comparison",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 3
+                        },
+                        "widget_id": 12488840,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniqueCount(session) FROM PageView since 60 minute ago until 10 seconds ago COMPARE WITH 1 hour ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Active Sessions",
+                            "notes": "Here we are counting each unique session id that was seen in the last hour of traffic."
+                        }
+                    },
+                    {
+                        "visualization": "comparison_line_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 3,
+                            "column": 1
+                        },
+                        "widget_id": 12488841,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentile(duration,50) From PageView SINCE 1 week ago COMPARE WITH 1 week ago TIMESERIES 30 minutes"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Median Load Time",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "histogram",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 3
+                        },
+                        "widget_id": 12488842,
+                        "data": [
+                            {
+                                "nrql": "SELECT histogram(duration, 7, 100) FROM PageView SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Load Time Distribution",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "comparison_line_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 4,
+                            "column": 1
+                        },
+                        "widget_id": 12488843,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentile(duration,50) as 'Median (ms)',percentile(duration,95) as '95th percentile (ms)' FROM SyntheticCheck SINCE 1 week AGO COMPARE WITH 1 week ago TIMESERIES 30 minutes"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Synthetic Checks",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 3
+                        },
+                        "widget_id": 12488844,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(duration) / 1000 FROM SyntheticCheck FACET monitorName SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Synthetic Response Times (s)",
+                            "notes": null,
+                            "drilldown_dashboard_id": 566445
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 5,
+                            "column": 1
+                        },
+                        "widget_id": 12488845,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM PageView FACET deviceType SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Traffic by Device Type",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 5,
+                            "column": 2
+                        },
+                        "widget_id": 12488846,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM PageView FACET countryCode SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Traffic by Origin",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 5,
+                            "column": 3
+                        },
+                        "widget_id": 12488847,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM PageView FACET userAgentName SINCE 1 week ago LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Browser Breakdown",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 1
+                        },
+                        "widget_id": 12488848,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentile(duration,50) from PageView facet deviceType TIMESERIES 10 minutes SINCE 1 day ago LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Load Time by Device Type",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 2
+                        },
+                        "widget_id": 12488849,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentile(duration,50) from PageView facet countryCode TIMESERIES 30 minutes SINCE 1 day ago LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Load Time by Origin",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 3
+                        },
+                        "widget_id": 12488850,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentile(duration,50) from PageView facet userAgentName TIMESERIES 30 minutes SINCE 1 day ago LIMIT 10"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Load Time by Browser",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 7,
+                            "column": 1
+                        },
+                        "widget_id": 12488851,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(duration - backendDuration) as 'Front',average(backendDuration) as 'Back',average(connectionSetupDuration) as 'Connection',average(domProcessingDuration) as 'DOM Processing',average(pageRenderingDuration) as 'Page Rendering' FROM PageView  facet browserTransactionName SINCE 1 day ago LIMIT 30"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Performance by Page Group",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 7,
+                            "column": 3
+                        },
+                        "widget_id": 12488852,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentile(duration,50) from PageView facet browserTransactionName since 24 hours ago TIMESERIES 30 minutes LIMIT 10"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Response Time by Browser Transaction",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 8,
+                            "column": 1
+                        },
+                        "widget_id": 12488853,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(duration - backendDuration) as 'Front',average(backendDuration) as 'Back',average(connectionSetupDuration) as 'Connection',average(domProcessingDuration) as 'DOM Processing',average(pageRenderingDuration) as 'Page Rendering' FROM PageView facet userAgentName,userAgentVersion SINCE 1 day ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Browser Version Breakdown",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_area_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 8,
+                            "column": 3
+                        },
+                        "widget_id": 12488854,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(duration) from PageView facet userAgentName,userAgentVersion since 24 hours ago TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Response Time by Browser Version",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 9,
+                            "column": 1
+                        },
+                        "widget_id": 12488855,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(duration), count(*) FROM PageView FACET session LIMIT 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Session Breakout",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 9,
+                            "column": 3
+                        },
+                        "widget_id": 12488856,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniqueCount(session) FROM PageView since 1 hour ago FACET city LIMIT 20"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Most Active Cities",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 3,
+                            "height": 1,
+                            "row": 10,
+                            "column": 1
+                        },
+                        "widget_id": 12488857,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(duration - backendDuration) as 'Front',average(backendDuration) as 'Back',average(connectionSetupDuration) as 'Connection',average(domProcessingDuration) as 'DOM Processing',average(pageRenderingDuration) as 'Page Rendering' FROM PageView  facet pageUrl SINCE 1 day ago LIMIT 30"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Performance by Page URL",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "event_table",
+                        "layout": {
+                            "width": 3,
+                            "height": 2,
+                            "row": 11,
+                            "column": 1
+                        },
+                        "widget_id": 12488858,
+                        "data": [
+                            {
+                                "nrql": "SELECT pageUrl,duration,(duration - backendDuration) as 'Front',backendDuration as 'Backend',connectionSetupDuration as 'Connection',domProcessingDuration,pageRenderingDuration as 'Page Rendering' FROM PageView SINCE 1 day ago LIMIT 300"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Page View Timeline",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 2,
+                            "row": 13,
+                            "column": 1
+                        },
+                        "widget_id": 12488859,
+                        "data": [
+                            {
+                                "nrql": "SELECT ln(count(*)*average(duration)) as 'Impact Score',count(*), percentile(duration,50) FROM PageView SINCE 1 day ago FACET browserTransactionName LIMIT 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "User Experience Impact Score",
+                            "notes": "Impact Score is a derived metric, combining the throughput and load time for given pages, so that we can easily identify the best candidates for optimization, in terms of customer impact.",
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 2,
+                            "row": 13,
+                            "column": 3
+                        },
+                        "widget_id": 12488860,
+                        "data": [
+                            {
+                                "nrql": "SELECT ln(count(*)*average(duration)) as 'Impact Score',count(*),percentile(duration,50) FROM PageView SINCE 1 day ago FACET browserTransactionName LIMIT 20"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Top Pages by UX Impact",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 15,
+                            "column": 1
+                        },
+                        "widget_id": 12488861,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM JavaScriptError FACET errorClass SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Javascript Errors by Class",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    },
+                    {
+                        "visualization": "faceted_area_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 15,
+                            "column": 2
+                        },
+                        "widget_id": 12488862,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM JavaScriptError FACET errorClass SINCE 1 week ago TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "JS Errors over Time",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 2,
+                            "row": 16,
+                            "column": 1
+                        },
+                        "widget_id": 12488863,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM JavaScriptError FACET requestUri SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Pages with the most JS Errors",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_area_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 16,
+                            "column": 2
+                        },
+                        "widget_id": 12488864,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM JavaScriptError FACET requestUri SINCE 1 week ago TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "JS Errors by URL",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 17,
+                            "column": 2
+                        },
+                        "widget_id": 12488865,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM JavaScriptError FACET errorMessage SINCE 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "JS Errors by Message",
+                            "notes": null,
+                            "drilldown_dashboard_id": 361736
+                        }
+                    }
+                ],
+                "filter": {
+                    "event_types": [
+                        "SyntheticCheck",
+                        "PageView",
+                        "JavaScriptError"
+                    ],
+                    "attributes": [
+                        "appName",
+                        "browserTransactionName",
+                        "countryCode",
+                        "deviceType",
+                        "monitorName",
+                        "pageUrl",
+                        "userAgentName",
+                        "username",
+                        "session",
+                        "city",
+                        "errorClass",
+                        "errorMessage"
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "id": 13,
+        "Category": "Infrastructure",
+        "Name": "Infrastructure Dashboard ",
+        "dashboard": {
+            "dashboard": {
+                "id": 998433,
+                "title": "Infrastructure",
+                "description": null,
+                "icon": "cog",
+                "created_at": "2019-09-27T12:52:16Z",
+                "updated_at": "2019-09-27T12:52:16Z",
+                "visibility": "all",
+                "editable": "editable_by_all",
+                "ui_url": "https://insights.newrelic.com/accounts/689105/dashboards/998433",
+                "api_url": "https://api.newrelic.com/v2/dashboards/998433",
+                "metadata": {
+                    "version": 1
+                },
+                "widgets": [
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 2,
+                            "row": 1,
+                            "column": 1
+                        },
+                        "widget_id": 12492456,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(cpuPercent) FROM SystemSample since 3 hours ago facet hostname limit 400"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Server CPU",
+                            "notes": null,
+                            "drilldown_dashboard_id": 742762
+                        }
+                    },
+                    {
+                        "visualization": "attribute_sheet",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 2
+                        },
+                        "widget_id": 12492457,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(memoryUsedBytes) /1000000 AS 'Avg MB Used', average(memoryFreeBytes)/1000000 AS 'Avg MB Free' FROM SystemSample since 10 minutes ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Memory Usage",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 3
+                        },
+                        "widget_id": 12492458,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(receiveBytesPerSecond), average(transmitBytesPerSecond) FROM NetworkSample SINCE 30 MINUTES AGO TIMESERIES AUTO"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Network I/O",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "line_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 2,
+                            "column": 2
+                        },
+                        "widget_id": 12492459,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(loadAverageOneMinute) , average(loadAverageFiveMinute), average(loadAverageFifteenMinute) FROM SystemSample since 3 hours ago TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "System Load",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 3,
+                            "column": 1
+                        },
+                        "widget_id": 12492460,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*), average(threadCount), average(cpuPercent), average(cpuSystemPercent) FROM ProcessSample FACET commandName SINCE 1 hour ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Process Breakdown",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 3
+                        },
+                        "widget_id": 12492461,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(readBytesPerSecond), average(writeBytesPerSecond) FROM StorageSample SINCE 30 MINUTES AGO TIMESERIES AUTO"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Disk I/O",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 2,
+                            "height": 2,
+                            "row": 4,
+                            "column": 1
+                        },
+                        "widget_id": 12492462,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(loadAverageFiveMinute) FROM SystemSample SINCE 30 MINUTES AGO facet hostname"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "5 minute Load Average grouped by Host",
+                            "notes": null,
+                            "drilldown_dashboard_id": 525097
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 3
+                        },
+                        "widget_id": 12492463,
+                        "data": [
+                            {
+                                "nrql": "SELECT max(diskUsedPercent) as 'Percent Full' FROM StorageSample since 1 minute ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Disk Utilization",
+                            "notes": null,
+                            "threshold": {
+                                "red": 100
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 5,
+                            "column": 3
+                        },
+                        "widget_id": 12492464,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(criticalViolationCount) from SystemSample facet hostname since 30 minutes ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Critical Violations grouped by Hosts",
+                            "notes": null,
+                            "drilldown_dashboard_id": 525097
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 1
+                        },
+                        "widget_id": 12492465,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(transmitBytesPerSecond)/1024/1024 as 'MB/Sec transmitted' FROM NetworkSample SINCE 30 MINUTES AGO facet hostname"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "MB/sec transmitted grouped by Hostname",
+                            "notes": null,
+                            "drilldown_dashboard_id": 525097
+                        }
+                    },
+                    {
+                        "visualization": "faceted_area_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 2
+                        },
+                        "widget_id": 12492466,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM TransactionError FACET error_type SINCE 1 day ago TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Errors over Time by Type",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 3
+                        },
+                        "widget_id": 12492467,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniquecount(hostname) FROM NetworkSample SINCE 30 MINUTES AGO facet ipV6Address, hostname"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "What is the IPv6 Address of the Host",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "billboard_comparison",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 7,
+                            "column": 1
+                        },
+                        "widget_id": 12492468,
+                        "data": [
+                            {
+                                "nrql": "SELECT max(duration) from Transaction where appName = 'WebPortal' since 1 day ago compare with 1 day ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Transaction Max Response Time",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 7,
+                            "column": 2
+                        },
+                        "widget_id": 12492469,
+                        "data": [
+                            {
+                                "nrql": "SELECT max(networkDuration) from PageView where appName = 'WebPortal' facet name since 1 day ago limit 5 timeseries"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Worst Performing Network Time Per PageUrl - TimeSeries",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 7,
+                            "column": 3
+                        },
+                        "widget_id": 12492470,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniquecount(hostname) FROM NetworkSample SINCE 30 MINUTES AGO facet ipV4Address, hostname"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "What is the IPv4 Address of the Host",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "billboard_comparison",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 8,
+                            "column": 1
+                        },
+                        "widget_id": 12492471,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(receivePacketsPerSecond) as 'Packets Per Second' FROM NetworkSample SINCE 1 hour AGO compare with 1 hour ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Received Packets",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 8,
+                            "column": 2
+                        },
+                        "widget_id": 12492472,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) from Transaction  since 1 day ago facet host limit 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Traffic Per Host - Load Balanced",
+                            "notes": null,
+                            "drilldown_dashboard_id": 221958
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 8,
+                            "column": 3
+                        },
+                        "widget_id": 12492473,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM Transaction FACET host SINCE 1 day ago TIMESERIES AUTO"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Application Throughput by Host",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 9,
+                            "column": 1
+                        },
+                        "widget_id": 12492474,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) from Transaction  since 1 day ago facet host limit 5 TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Traffic Per Host - Load Balanced - TimeSeries",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 9,
+                            "column": 2
+                        },
+                        "widget_id": 12492475,
+                        "data": [
+                            {
+                                "nrql": "select average(cpuPercent) from SystemSample facet hostname limit 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Top 5 CPU Average",
+                            "notes": null,
+                            "drilldown_dashboard_id": 459786
+                        }
+                    },
+                    {
+                        "visualization": "billboard_comparison",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 9,
+                            "column": 3
+                        },
+                        "widget_id": 12492476,
+                        "data": [
+                            {
+                                "nrql": "SELECT max(databaseDuration) as 'Max Duration' from Transaction where appName = 'Inventory Service' since 1 day ago compare with 1 day ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Max Database Duration",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 10,
+                            "column": 1
+                        },
+                        "widget_id": 12492477,
+                        "data": [
+                            {
+                                "nrql": "select 100 * average(memoryUsedBytes) / (average(memoryFreeBytes) + average(memoryUsedBytes)) as PctUsed from SystemSample facet hostname limit 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Top 5 Memory Utilization",
+                            "notes": null,
+                            "drilldown_dashboard_id": 359385
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 10,
+                            "column": 2
+                        },
+                        "widget_id": 12492478,
+                        "data": [
+                            {
+                                "nrql": "select average(diskUsedPercent) from StorageSample facet hostname limit 5 TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Top 5 Disk Consumers Timeseries",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "comparison_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 10,
+                            "column": 3
+                        },
+                        "widget_id": 12492479,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(networkDuration*10*-1) as 'AVG. Network Duration' FROM PageView SINCE 1 HOUR AGO COMPARE WITH 1 hour AGO TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Average Network Duration - TimeSeries",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 11,
+                            "column": 1
+                        },
+                        "widget_id": 12492480,
+                        "data": [
+                            {
+                                "nrql": "select average(cpuPercent) from SystemSample facet hostname limit 5 timeseries 5 minutes"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Top 5 CPU Timeseries",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 11,
+                            "column": 2
+                        },
+                        "widget_id": 12492481,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) / 100 as 'Hosts' FROM Transaction WHERE appName NOT LIKE '%Tower%' FACET appName   SINCE 1 day ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Total number of hosts by Application",
+                            "notes": null,
+                            "drilldown_dashboard_id": 443508
+                        }
+                    },
+                    {
+                        "visualization": "billboard_comparison",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 11,
+                            "column": 3
+                        },
+                        "widget_id": 12492482,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(networkDuration*10) as 'AVG. Network Duration' FROM PageView SINCE 1 HOUR AGO COMPARE WITH 1 hour AGO"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Average Network Duration",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 12,
+                            "column": 1
+                        },
+                        "widget_id": 12492483,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentage(count(*), WHERE result = 'SUCCESS') as 'Uptime' from SyntheticCheck  limit 1000 since 1 week ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "External Uptime",
+                            "notes": null,
+                            "threshold": {
+                                "red": 100
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 12,
+                            "column": 2
+                        },
+                        "widget_id": 12492484,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM InfrastructureEvent,StorageSample,SystemSample FACET hostname SINCE 1 month ago LIMIT 25"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Infrastructure Events by Hosts",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 12,
+                            "column": 3
+                        },
+                        "widget_id": 12492485,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(transmitBytesPerSecond) from NetworkSample FACET hostname LIMIT 5 timeseries"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Top 5 Network Transmitters Timeseries",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 13,
+                            "column": 1
+                        },
+                        "widget_id": 12492486,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM TransactionError FACET host SINCE 1 hour ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Errors by Server",
+                            "notes": null,
+                            "drilldown_dashboard_id": 455763
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 13,
+                            "column": 2
+                        },
+                        "widget_id": 12492487,
+                        "data": [
+                            {
+                                "nrql": "select apdex(duration , t: 0.03) * 100 FROM Transaction facet host limit 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Server Quality Score",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 13,
+                            "column": 3
+                        },
+                        "widget_id": 12492488,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentage(count(*) / 100, WHERE appName = 'WebPortal' OR appName = 'Plan Service') as 'Percent of hosts On-premises' FROM Transaction WHERE appName NOT LIKE '%Tower%' since 10 minutes ago limit 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Percentage of Hosts On-Premises",
+                            "notes": null,
+                            "threshold": {
+                                "red": 100
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 14,
+                            "column": 1
+                        },
+                        "widget_id": 12492489,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(cpuSystemPercent) FROM SystemSample since 3 hours ago facet hostname limit 400"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Server System Percent",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 14,
+                            "column": 2
+                        },
+                        "widget_id": 12492490,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(duration) from Transaction  since 3 hours ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Transaction Times",
+                            "notes": null,
+                            "threshold": {
+                                "red": 0.1
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 14,
+                            "column": 3
+                        },
+                        "widget_id": 12492491,
+                        "data": [
+                            {
+                                "nrql": "select apdex(duration , t: 0.03) * 100 FROM Transaction facet appName limit 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Application Quality Score",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 15,
+                            "column": 1
+                        },
+                        "widget_id": 12492492,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM TransactionError FACET appName SINCE 1 hour ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Errors by Application",
+                            "notes": null,
+                            "drilldown_dashboard_id": 455763
+                        }
+                    }
+                ],
+                "filter": {
+                    "event_types": [
+                        "SystemSample",
+                        "ComputeSample",
+                        "ProcessSample",
+                        "NetworkSample"
+                    ],
+                    "attributes": [
+                        "hostname",
+                        "ec2Tag_Name",
+                        "commandName"
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "id": 14,
+        "Category": "Infrastructure",
+        "Name": "Kubernetes Integration - Infrastructure",
+        "dashboard": {
+            "dashboard": {
+                "id": 998441,
+                "title": "Kubernetes Integration - Infrastructure",
+                "description": null,
+                "icon": "bar-chart",
+                "visibility": "all",
+                "editable": "editable_by_all",
+                "metadata": {
+                    "version": 1
+                },
+                "widgets": [
+                    {
+                        "visualization": "attribute_sheet",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 1
+                        },
+                        "widget_id": 12492645,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sNodeSample, K8sPodSample select uniqueCount(podName) as 'Pods'"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Total Pods",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 2
+                        },
+                        "widget_id": 12492646,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sNamespaceSample SELECT uniqueCount(namespace) FACET clusterName limit 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Namespaces per Cluster",
+                            "notes": null,
+                            "drilldown_dashboard_id": 539248
+                        }
+                    },
+                    {
+                        "visualization": "attribute_sheet",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 3
+                        },
+                        "widget_id": 12492647,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sNodeSample, K8sNamespaceSample, K8sDeploymentSample, K8sPodSample, K8sContainerSample SELECT uniqueCount(K8sNodeSample.entityId) as 'Nodes', uniqueCount(K8sNamespaceSample.clusterName) as 'Clusters', uniqueCount(K8sNamespaceSample.entityId) as 'Namespaces', uniqueCount(K8sDeploymentSample.entityId) as 'Deployments', uniqueCount(K8sPodSample.entityId) as 'Pods', uniqueCount(K8sContainerSample.containerID) as 'Containers'"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "# of K8s Objects",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "attribute_sheet",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 1
+                        },
+                        "widget_id": 12492648,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sNodeSample SELECT (average(memoryUsedBytes) * uniqueCount(entityName)) / 1000000000 as 'GBytes'"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Total Node Memory Used",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 2
+                        },
+                        "widget_id": 12492649,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sPodSample SELECT uniqueCount(entityId) as 'pod' FACET namespace limit 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Pods by Namespace",
+                            "notes": null,
+                            "drilldown_dashboard_id": 539248
+                        }
+                    },
+                    {
+                        "visualization": "faceted_area_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 3
+                        },
+                        "widget_id": 12492650,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sContainerSample SELECT max(restartCount)-min(restartCount) as 'Restarts' FACET clusterName, podName, containerName TIMESERIES limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Container Restarts",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "attribute_sheet",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 1
+                        },
+                        "widget_id": 12492651,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sNodeSample SELECT (average(cpuUsedCores) * uniqueCount(entityName)) as 'Cores'"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Total Node CPU Used",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 2
+                        },
+                        "widget_id": 12492652,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sContainerSample SELECT latest(memoryUsedBytes/memoryLimitBytes) * 100 as '% Memory' FACET clusterName, podName, containerName TIMESERIES limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Container Memory Usage - % Used vs Limit",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_area_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 3
+                        },
+                        "widget_id": 12492653,
+                        "data": [
+                            {
+                                "nrql": "SELECT latest(podsDesired) - latest(podsReady) as 'Missing Pods' FROM K8sReplicasetSample since 10 minutes ago facet deploymentName timeseries limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Missing Pods by Deployment",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 1
+                        },
+                        "widget_id": 12492654,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sContainerSample SELECT latest(cpuUsedCores/cpuLimitCores) * 100 as '% CPU' FACET clusterName, podName, containerName TIMESERIES limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Container CPU Usage - % Used vs Limit",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 2
+                        },
+                        "widget_id": 12492655,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(memoryUsedBytes / 1000000) as 'MB of Mem' from K8sContainerSample FACET clusterName, podName, containerName timeseries since 60 minutes ago limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Container MBytes of Memory Used",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 3
+                        },
+                        "widget_id": 12492656,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniqueCount(containerID) FROM K8sContainerSample SINCE 10 minutes AGO facet namespace TIMESERIES"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Containers by Namespace",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 5,
+                            "column": 1
+                        },
+                        "widget_id": 12492657,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(cpuUsedCores) as 'CPU Cores Used' from K8sContainerSample FACET clusterName, podName, containerName timeseries since 60 minutes ago limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Container CPU Cores Used",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "faceted_line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 5,
+                            "column": 3
+                        },
+                        "widget_id": 12492658,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniqueCount(podName) FROM K8sPodSample where status='Running' SINCE 10 minutes AGO facet deploymentName TIMESERIES limit 50"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Active Pods by Deployment",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 6,
+                            "column": 1
+                        },
+                        "widget_id": 12492659,
+                        "data": [
+                            {
+                                "nrql": "SELECT latest(status) as 'Status' from K8sPodSample WHERE status NOT IN ('Running') facet clusterName, namespace, podName    since 10 minutes ago limit 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Pods not Running by Cluster/Namespace",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 6,
+                            "column": 3
+                        },
+                        "widget_id": 12492660,
+                        "data": [
+                            {
+                                "nrql": "SELECT uniquecount(podName) from K8sPodSample where status='Running' facet nodeName since 10 minutes ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Pod Count by Node",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 7,
+                            "column": 1
+                        },
+                        "widget_id": 12492661,
+                        "data": [
+                            {
+                                "nrql": "FROM K8sNodeSample, K8sPodSample SELECT average(cpuUsedCores) as 'Used Cores', average(memoryUsedBytes) as 'Used Memory', uniqueCount(podName) as 'Pods' FACET nodeName since 10 minutes ago limit 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Node Resource Consumption",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_table",
+                        "layout": {
+                            "width": 2,
+                            "height": 1,
+                            "row": 8,
+                            "column": 1
+                        },
+                        "widget_id": 12492662,
+                        "data": [
+                            {
+                                "nrql": "SELECT average(`net.rxBytesPerSecond`)/1000000 as 'Received MBps', average(`net.txBytesPerSecond`)/1000000 as 'Transmitted MBps', latest(`net.errorCount`) as 'Error Count' FROM K8sPodSample FACET podName since 10 minutes ago limit 100"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Pod Network Status",
+                            "notes": null,
+                            "drilldown_dashboard_id": 863994
+                        }
+                    }
+                ],
+                "filter": {
+                    "event_types": [
+                        "K8sContainerSample",
+                        "K8sDeploymentSample",
+                        "K8sNamespaceSample",
+                        "K8sNodeSample",
+                        "K8sPodSample",
+                        "K8sReplicasetSample"
+                    ],
+                    "attributes": []
+                }
+            }
+        }
+    },
+    {
+        "id": 15,
+        "Category": "Synthetics",
+        "Name": "Synthetics Unresponsive Checks ",
+        "dashboard": {
+            "dashboard": {
+                "id": 998450,
+                "title": "Synthetics Unresponsive Checks",
+                "description": null,
+                "icon": "bar-chart",
+                "visibility": "all",
+                "editable": "editable_by_all",
+                "ui_url": "https://insights.newrelic.com/accounts/689105/dashboards/998450",
+                "api_url": "https://api.newrelic.com/v2/dashboards/998450",
+                "metadata": {
+                    "version": 1
+                },
+                "widgets": [
+                    {
+                        "visualization": "markdown",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 1
+                        },
+                        "widget_id": 12492809,
+                        "data": [
+                            {
+                                "source": "![Image](https://nerdydata.com/assets/reports/78299f9a-af61-4d23-bdda-405adc0596ec.jpg)"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 2
+                        },
+                        "widget_id": 12492810,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticCheck SINCE today"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Total Number of Synthetic Checks",
+                            "notes": null,
+                            "threshold": {
+                                "red": 5000
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 1,
+                            "column": 3
+                        },
+                        "widget_id": 12492811,
+                        "data": [
+                            {
+                                "nrql": "SELECT percentage(count(result), WHERE result = 'FAILED') FROM SyntheticCheck SINCE today"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Percentage of Unresponsive Checks",
+                            "notes": null,
+                            "threshold": {
+                                "red": 100
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "gauge",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 1
+                        },
+                        "widget_id": 12492812,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticCheck SINCE today WHERE result = 'FAILED'"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Number of Unresponsive Checks",
+                            "notes": "Failures in 24 hours",
+                            "threshold": {
+                                "red": 100
+                            }
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 2
+                        },
+                        "widget_id": 12492813,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticCheck SINCE today WHERE result = 'FAILED' FACET locationLabel LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Location",
+                            "notes": null,
+                            "drilldown_dashboard_id": 352787
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 2,
+                            "column": 3
+                        },
+                        "widget_id": 12492814,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticRequest SINCE today WHERE responseCode != 200 facet path LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Non-200 Responses by Path",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "line_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 1
+                        },
+                        "widget_id": 12492815,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticCheck SINCE today WHERE result = 'FAILED' TIMESERIES AUTO"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Unresponsive Checks",
+                            "notes": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 2
+                        },
+                        "widget_id": 12492816,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticCheck  SINCE today WHERE result = 'FAILED' FACET error LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Monitors by  Error Code",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 3,
+                            "column": 3
+                        },
+                        "widget_id": 12492817,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticRequest WHERE responseCode != 200 SINCE today FACET responseStatus LIMIT 5"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Status Codes",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_pie_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 1
+                        },
+                        "widget_id": 12492818,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticRequest WHERE responseCode != 200 SINCE today FACET monitorName"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Page Elements by Monitor Name",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    },
+                    {
+                        "visualization": "facet_bar_chart",
+                        "layout": {
+                            "width": 1,
+                            "height": 1,
+                            "row": 4,
+                            "column": 2
+                        },
+                        "widget_id": 12492819,
+                        "data": [
+                            {
+                                "nrql": "SELECT count(*) FROM SyntheticCheck FACET type since 1 day ago"
+                            }
+                        ],
+                        "presentation": {
+                            "title": "Type of Checks",
+                            "notes": null,
+                            "drilldown_dashboard_id": null
+                        }
+                    }
+                ],
+                "filter": {
+                    "event_types": [
+                        "SyntheticCheck",
+                        "SyntheticRequest"
                     ],
                     "attributes": []
                 }

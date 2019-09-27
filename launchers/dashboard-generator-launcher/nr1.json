@@ -2,6 +2,6 @@
     "schemaType": "LAUNCHER",
     "id": "dashboard-generator-launcher",
     "description": "Launcher to allow you to create awesome dashboards",
-    "displayName": "Dashboard Generator",
+    "displayName": "Dashboard Generator staging",
     "rootNerdletId": "dashboard-generator-nerdlet"
 }
