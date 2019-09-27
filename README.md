@@ -1,18 +1,11 @@
-# Dashboard Generatore (Dashboard-Generator)
-
-
+# Dashboard Generator
 
 ## Usage
 
 This application creates dashboards for your account. There are many dashboards for different New Relic Products. 
 
-analyzes your cloud environment, and figures out where you're wasting money on excess cloud capacity. The application compares the size of your instances to their utilization, and estimates how much you could save by optimizing the size.
 
-Currently supports:
-
-- AWS
-
-![Screenshot #1](screenshots/Dashboard Image.png)
+![Screenshot #1](screenshots/Dashboard%20Image.png)
 
 ## Open Source License
 
@@ -29,7 +22,7 @@ Required:
 Clone this repository and run the following scripts:
 
 ```bash
-nr1 nerdpack:clone -r https://source.datanerd.us/CSE/Dashboard-Generator/nr1-cloud-optimize.git
+nr1 nerdpack:clone -r git@source.datanerd.us:CSE/Dashboard-Generator.git
 cd dashboard-generator/
 nr1 nerdpack:uuid -gf
 npm install
