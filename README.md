@@ -22,7 +22,7 @@ Required:
 Clone this repository and run the following scripts:
 
 ```bash
-nr1 nerdpack:clone -r git@source.datanerd.us:CSE/Dashboard-Generator.git
+nr1 nerdpack:clone -r git@github.com:darse123/nr1-Dashboard-Generator.git
 cd dashboard-generator/
 nr1 nerdpack:uuid -gf
 npm install
