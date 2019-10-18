@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import PostData from './data/post.json'
+import { Grid, GridItem } from 'nr1'
 
 class Button extends React.Component {
     // This syntax ensures `this` is bound within handleClick.
@@ -10,17 +11,14 @@ class Button extends React.Component {
         console.debug(props);
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this);
-        this.state = {
+
+        state = {
             value: '',
-            statusText: ''
-        }
-        this.state = {
             statusText: ''
         }
 
     }
 }
-
 export default class Table extends React.Component {
     // This syntax ensures `this` is bound within handleClick.
     // Warning: this is *experimental* syntax.
@@ -85,24 +83,28 @@ export default class Table extends React.Component {
     render() {
         return (
             <div class="page">
-                <h1>Dashboard Generator</h1>
-                <table class="layout display responsive-table">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th colSpan="2">Functions
+                <Grid >
+                    <GridItem columnStart={4} columnEnd={8}>
+                        <h1>Dashboard Generator</h1>
+                        <table class="layout display responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th colSpan="2">Functions
               <form onSubmit={this.handleSubmit}>
-                                    <input type="text" placeholder='Insert Admin API Key here' onChange={this.handleChange} />
-                                    <h1></h1>
-                                </form> </th>
-                            <th>
-                            </th>
-                        </tr>
-                        {this.renderPostData()}
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                                            <input type="text" placeholder='Insert Admin API Key here' onChange={this.handleChange} />
+                                            <h1></h1>
+                                        </form> </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                {this.renderPostData()}
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </GridItem>
+                </Grid>
             </div>
         );
     }

@@ -1,6 +1,6 @@
 {
-    "schemaType": "NERDLET",
-    "id": "dashboard-generator-nerdlet",
-    "description": "Describe me",
-    "displayName": "Dashboard Generator v1.1"
+  "schemaType": "NERDLET",
+  "id": "dashboard-generator-nerdlet",
+  "description": "Describe me",
+  "displayName": "Dashboard Generator"
 }

@@ -10,6 +10,7 @@ export default class MyAwesomeNerdpack extends React.Component {
         launcherUrlState: PropTypes.object,
         width: PropTypes.number,
         height: PropTypes.number,
+
     };
 
     render() {
