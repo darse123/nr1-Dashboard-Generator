@@ -22,7 +22,7 @@ Required:
 Clone this repository and run the following scripts:
 
 ```bash
-nr1 nerdpack:clone -r git@source.datanerd.us:CSE/Dashboard-Generator.git
+nr1 nerdpack:clone -r git@github.com:darse123/nr1-Dashboard-Generator.git
 cd dashboard-generator/
 nr1 nerdpack:uuid -gf
 npm install
@@ -48,14 +48,4 @@ Visit [https://one.newrelic.com](https://one.newrelic.com), navigate to the Nerd
 
 ## Support
 
-New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project here on GitHub.
-
-_Please do not report issues with this software to New Relic Global Technical Support._
-
-### Community
-
-New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
-
-
-
-
+While the creator of this Nerdpack is employed by New Relic - this Nerdpack is offered as a personal project, as such not supported by New Relic. For assistance please submit requests through: https://github.com/darse123/nr1-Dashboard-Generator/issues
